@@ -7,10 +7,10 @@ services:
 before_script:
   - cd app/client
   - npm install
-  - npm run build
+  - CI=false npm run build
   - cd ../server
   - npm install
-  - npm run build
+  - CI=false npm run build
   - cd ../..
   - cp -r app/server container/server/app
   - cp -r app/client/build container/client
