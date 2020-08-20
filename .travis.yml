@@ -15,11 +15,11 @@ before_script:
   - cp -r app/server container/server/app
   - cp -r app/client/build container/client
 script:
-  - docker build -t spikehip/resumake.io-server:$TRAVIS_BUILD_NUMBER container/server
-  - docker build -t spikehip/resumake.io-client:$TRAVIS_BUILD_NUMBER container/client
+  - docker build -t spikehip/resumake.io-server:latest container/server
+  - docker build -t spikehip/resumake.io-client:latest container/client
 after_success:
   - if [ "$TRAVIS_BRANCH" == "v3" ]; then
     docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD";
-    docker push spikehip/resumake.io-server;
-    docker push spikehip/resumake.io/client;
+    docker push spikehip/resumake.io-server:latest;
+    docker push spikehip/resumake.io-client:latest;
     fi
