@@ -1,5 +1,7 @@
 ![resumake-logo](https://i.imgur.com/Y4JmhrV.png)
 
+[![Build Status](https://travis-ci.com/spikehip/resumake.io.svg?branch=v3)](https://travis-ci.com/spikehip/resumake.io)
+
 # resumake.io
 > A website for automatically generating elegant LaTeX resumes without the need to write any TeX code yourself.
 
