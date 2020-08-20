@@ -4,3 +4,6 @@ npm-debug.log
 dist
 *.swp
 .vscode
+container/client/build
+container/server/app
+app/server/lib

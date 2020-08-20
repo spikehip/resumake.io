@@ -1,0 +1,25 @@
+language: node_js
+node_js:
+  - "12"
+sudo: required
+services:
+  - docker
+before_script:
+  - cd app/client
+  - npm install
+  - npm run build
+  - cd ../server
+  - npm install
+  - npm run build
+  - cd ../..
+  - cp -r app/server container/server/app
+  - cp -r app/client/build container/client
+script:
+  - docker build -t spikehip/resumake.io-server:$TRAVIS_BUILD_NUMBER container/server
+  - docker build -t spikehip/resumake.io-client:$TRAVIS_BUILD_NUMBER container/client
+after_success:
+  - if [ "$TRAVIS_BRANCH" == "v3" ]; then
+    docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD";
+    docker push spikehip/resumake.io-server;
+    docker push spikehip/resumake.io/client;
+    fi
